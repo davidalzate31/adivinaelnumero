@@ -70,3 +70,30 @@
                 string respuesta = Console.ReadLine().ToUpper();
                 seguirjugando = respuesta == "s";
             }
+        }
+
+        Console.WriteLine("Presione cualquier tecla para salir...");
+        Console.ReadKey();
+    }
+
+    static int GetNumeroAleatorio(int numJugadores)
+    {
+        int rangoMaximo = GetRangoMaximo(numJugadores);
+        return new Random().Next(rangoMaximo + 1);
+    }
+
+    static int GetRangoMaximo(int numJugadores)
+    {
+        switch (numJugadores)
+        {
+            case 2:
+                return 50;
+            case 3:
+                return 100;
+            case 4:
+                return 200;
+            default:
+                return 0;
+        }
+    }
+}
