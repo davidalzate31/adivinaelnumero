@@ -31,4 +31,42 @@
         bool seguirjugando = true;
         while (seguirjugando);
 
+        {
+            // Recorrer jugadores
+            for (int i = 1; i <= numjugadores; i++)
+            {
+                // Mostrar turno del jugador
+                Console.WriteLine("Turno del jugador {0}", i);
 
+                // Pedir un número al jugador
+                int numeroIngresado;
+                do
+                {
+                    Console.WriteLine("Ingrese un número: ");
+                    numeroIngresado = int.Parse(Console.ReadLine());
+                } while (numeroIngresado < 0 || numeroIngresado > GetRangoMaximo(numjugadores));
+
+                // Evaluar el número ingresado
+                if (numeroIngresado == numeroAleatorio)
+                {
+                    // Jugador gana
+                    Console.WriteLine("¡Felicidades, jugador {0}, has ganado!", i);
+                    seguirjugando = false;
+                    break;
+                }
+                else if (numeroIngresado > numeroAleatorio)
+                {
+                    Console.WriteLine("El número es menor.");
+                }
+                else
+                {
+                    Console.WriteLine("El número es mayor.");
+                }
+            }
+            //preguntar si se repite el juego
+            if (seguirjugando) ;
+            {
+                Console.WriteLine("Desea seguir jugando? (s/n)");
+                string respuesta = Console.ReadLine().ToUpper();
+                seguirjugando = respuesta == "s";
+            }
