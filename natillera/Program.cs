@@ -17,7 +17,8 @@
 
         while (volver)
         {
-            decimal aporteMensual, rendimientoMensual, aporteTotal = 0, rendimientoTotal = 0, bonoMensual = 0, bonoTotal = 0, aporteTotalNeto, tasaMensual;
+            decimal aporteMensual1 = 0, rendimientoMensual1 = 0, aporteTotal1 = 0, rendimientoTotal1 = 0, bonoMensual1 = 0, bonoTotal1 = 0, aporteTotalNeto1 = 0, tasaMensual1;
+            decimal aporteMensual2 = 0, rendimientoMensual2 = 0, aporteTotal2 = 0, rendimientoTotal2 = 0, bonoMensual2 = 0, bonoTotal2 = 0, aporteTotalNeto2 = 0, tasaMensual2;
             string continuar;
 
             //Clase random
@@ -25,44 +26,88 @@
 
             for (int mes = 1; mes <= 12; mes++)
             {
-                Console.Write($"Ingrese la cantidad que desea ahorrar en el mes {mes}: ");
-                aporteMensual = Convert.ToDecimal(Console.ReadLine());
+                Console.WriteLine($"Mes {mes}: Socio 1");
+                Console.Write("Ingrese la cantidad que desea ahorrar: ");
+                aporteMensual1 = Convert.ToDecimal(Console.ReadLine());
 
-                tasaMensual = (decimal)random.Next(1, 51) / 10;
-                rendimientoMensual = aporteMensual * (tasaMensual / 100);
+                tasaMensual1 = (decimal)random.Next(1, 51) / 10;
+                rendimientoMensual1 = aporteMensual1 * (tasaMensual1 / 100);
 
-                if (tasaMensual < 3.5M)
+                if (aporteMensual1 == 0)
                 {
-                    bonoMensual = aporteMensual * (decimal)BONO;
-                    bonoTotal += bonoMensual;
-                    bonoMensual = 0;
+                    Console.WriteLine("Multa aplicada: $20.000");
+                    aporteMensual1 -= 20000;
                 }
 
-                aporteTotal += aporteMensual;
-                rendimientoTotal += rendimientoMensual;
+                if (tasaMensual1 < 3.5M)
+                {
+                    bonoMensual1 = aporteMensual1 * (decimal)BONO;
+                    bonoTotal1 += bonoMensual1;
+                    bonoMensual1 = 0;
+                }
 
-                Console.Write($"MES {mes}\n" +
-                              $"Aportes: {aporteMensual:C}\n" +
-                              $"Tasa: {tasaMensual}%\n" +
-                              $"Rendimientos: {rendimientoMensual:C}\n" +
-                              $"Bono: {bonoMensual:C}\n" +
-                              $"---------------------------------------\n" +
-                              $" \n");
+                aporteTotal1 += aporteMensual1;
+                rendimientoTotal1 += rendimientoMensual1;
+
+                Console.WriteLine($"Aportes: {aporteMensual1:C}");
+                Console.WriteLine($"Tasa: {tasaMensual1}%");
+                Console.WriteLine($"Rendimientos: {rendimientoMensual1:C}");
+                Console.WriteLine($"Bono: {bonoMensual1:C}");
+                Console.WriteLine("---------------------------------------");
+
+                Console.WriteLine($"Mes {mes}: Socio 2");
+                Console.Write("Ingrese la cantidad que desea ahorrar: ");
+                aporteMensual2 = Convert.ToDecimal(Console.ReadLine());
+
+                tasaMensual2 = (decimal)random.Next(1, 51) / 10;
+                rendimientoMensual2 = aporteMensual2 * (tasaMensual2 / 100);
+
+                if (aporteMensual2 == 0)
+                {
+                    Console.WriteLine("Multa aplicada: $20.000");
+                    aporteMensual2 -= 20000;
+                }
+
+                if (tasaMensual2 < 3.5M)
+                {
+                    bonoMensual2 = aporteMensual2 * (decimal)BONO;
+                    bonoTotal2 += bonoMensual2;
+                    bonoMensual2 = 0;
+                }
+
+                aporteTotal2 += aporteMensual2;
+                rendimientoTotal2 += rendimientoMensual2;
+
+                Console.WriteLine($"Aportes: {aporteMensual2:C}");
+                Console.WriteLine($"Tasa: {tasaMensual2}%");
+                Console.WriteLine($"Rendimientos: {rendimientoMensual2:C}");
+                Console.WriteLine($"Bono: {bonoMensual2:C}");
+                Console.WriteLine("---------------------------------------");
             }
+            Console.WriteLine("Socio 1:");
+            Console.WriteLine($"Aportes totales: {aporteTotal1:C}");
+            Console.WriteLine($"Rendimientos totales: {rendimientoTotal1:C}");
+            Console.WriteLine($"Bonos totales: {bonoTotal1:C}");
+            Console.WriteLine("---------------------------------------");
 
-            aporteTotalNeto = rendimientoTotal + aporteTotal + bonoTotal;
+            Console.WriteLine("Socio 2:");
+            Console.WriteLine($"Aportes totales: {aporteTotal2:C}");
+            Console.WriteLine($"Rendimientos totales: {rendimientoTotal2:C}");
+            Console.WriteLine($"Bonos totales: {bonoTotal2:C}");
+            Console.WriteLine("---------------------------------------");
 
-            Console.Write($"Aportes totales: {aporteTotal:C}\n" +
-                          $"Rendimientos totales: {rendimientoTotal:C}\n" +
-                          $"Bonos totales: {bonoTotal:C}\n" +
-                          "--------------------------------\n" +
-                          $"TOTAL NETO: {aporteTotalNeto:C}\n" +
-                          $" \n");
+            aporteTotalNeto1 = rendimientoTotal1 + aporteTotal1 + bonoTotal1;
+            aporteTotalNeto2 = rendimientoTotal2 + aporteTotal2 + bonoTotal2;
 
+            Console.WriteLine($"TOTAL NETO Socio 1: {aporteTotalNeto1:C}");
+            Console.WriteLine($"TOTAL NETO Socio 2: {aporteTotalNeto2:C}");
 
-            Console.WriteLine("¿Desea ingresra a la natillera para el siguiente año? (s/n)");
+            Console.WriteLine("¿Desea ingresar a la natillera para el siguiente año? (s/n)");
             continuar = Console.ReadLine().ToLower();
-            if (continuar == "n") volver = false;
+            if (continuar != "s")
+            {
+                volver = false;
+            }
         }
     }
 }
