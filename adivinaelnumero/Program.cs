@@ -17,23 +17,22 @@
         El programa deberá estar en capacidad de pedir a los jugadores si desean un nuevo “tirito” para volver a jugar y borrar consola, de lo contrario, finalizar el programa. */
 
         // Obtener el número de jugadores
-        int numjugadores;
+        int numJugadores;
         do
         {
-            Console.WriteLine("Ingrese el numero de jugadores (2-4): ");
-            numjugadores = int.Parse(Console.ReadLine());
-        } while (numjugadores < 2 || numjugadores > 4);
+            Console.WriteLine("Ingrese el número de jugadores (2-4): ");
+            numJugadores = int.Parse(Console.ReadLine());
+        } while (numJugadores < 2 || numJugadores > 4);
 
-        //generar numero aleatorio
-        int numeroAleatorio = GetNumeroAleatorio(numjugadores);
+        // Generar número aleatorio
+        int numeroAleatorio = GetNumeroAleatorio(numJugadores);
 
-        // iniciar juego
-        bool seguirjugando = true;
-        while (seguirjugando);
-
+        // Iniciar juego
+        bool seguirJugando = true;
+        while (seguirJugando)
         {
             // Recorrer jugadores
-            for (int i = 1; i <= numjugadores; i++)
+            for (int i = 1; i <= numJugadores; i++)
             {
                 // Mostrar turno del jugador
                 Console.WriteLine("Turno del jugador {0}", i);
@@ -44,14 +43,14 @@
                 {
                     Console.WriteLine("Ingrese un número: ");
                     numeroIngresado = int.Parse(Console.ReadLine());
-                } while (numeroIngresado < 0 || numeroIngresado > GetRangoMaximo(numjugadores));
+                } while (numeroIngresado < 0 || numeroIngresado > GetRangoMaximo(numJugadores));
 
                 // Evaluar el número ingresado
                 if (numeroIngresado == numeroAleatorio)
                 {
                     // Jugador gana
                     Console.WriteLine("¡Felicidades, jugador {0}, has ganado!", i);
-                    seguirjugando = false;
+                    seguirJugando = false;
                     break;
                 }
                 else if (numeroIngresado > numeroAleatorio)
@@ -63,12 +62,13 @@
                     Console.WriteLine("El número es mayor.");
                 }
             }
-            //preguntar si se repite el juego
-            if (seguirjugando) ;
+
+            // Preguntar si quieren volver a jugar
+            if (seguirJugando)
             {
-                Console.WriteLine("Desea seguir jugando? (s/n)");
+                Console.WriteLine("¿Desean volver a jugar? (S/N)");
                 string respuesta = Console.ReadLine().ToUpper();
-                seguirjugando = respuesta == "s";
+                seguirJugando = respuesta == "S";
             }
         }
 
