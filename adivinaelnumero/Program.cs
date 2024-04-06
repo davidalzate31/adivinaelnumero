@@ -16,6 +16,19 @@
             - Si el número ingresado coincide con el número aleatorio, entonces mostrar por pantalla la palabra “¡HAS GANADO!”. Aquí ya finaliza el juego.
         El programa deberá estar en capacidad de pedir a los jugadores si desean un nuevo “tirito” para volver a jugar y borrar consola, de lo contrario, finalizar el programa. */
 
+        // Obtener el número de jugadores
+        int numjugadores;
+        do
+        {
+            Console.WriteLine("Ingrese el numero de jugadores (2-4): ");
+            numjugadores = int.Parse(Console.ReadLine());
+        } while (numjugadores < 2 || numjugadores > 4);
 
-    }
-}
+        //generar numero aleatorio
+        int numeroAleatorio = GetNumeroAleatorio(numjugadores);
+
+        // iniciar juego
+        bool seguirjugando = true;
+        while (seguirjugando);
+
+
